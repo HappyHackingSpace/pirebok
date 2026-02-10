@@ -31,8 +31,6 @@ wheels/
 *.egg
 
 # PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
 
@@ -113,3 +111,9 @@ ENV/
 
 # mkdocs build dir
 site/
+
+# uv
+uv.lock
+
+# auto-generated version file
+pirebok/_version.py

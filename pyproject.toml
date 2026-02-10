@@ -1,110 +1,100 @@
-[tool]
-[tool.poetry]
+[project]
 name = "pirebok"
-version = "0.2.0"
-homepage = "https://github.com/dogancanbakir/pirebok"
+dynamic = ["version"]
 description = "a guided adversarial fuzzer"
-authors = ["Doğan Can Bakır <dogancanbakir@protonmail.com>"]
 readme = "README.md"
-license =  "MIT"
-classifiers=[
-    'Development Status :: 2 - Pre-Alpha',
-    'Intended Audience :: Developers',
-    'License :: OSI Approved :: MIT License',
-    'Natural Language :: English',
-    'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.8',
-    'Programming Language :: Python :: 3.9',
-    'Programming Language :: Python :: 3.10',
+license = "MIT"
+requires-python = ">=3.13"
+authors = [
+    { name = "Doğan Can Bakır", email = "dogancanbakir@protonmail.com" },
+    { name = "Happy Hacking Space", email = "team@happyhacking.space" },
 ]
-packages = [
-    { include = "pirebok" },
-    { include = "tests", format = "sdist" },
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "click>=8.1",
+    "tqdm>=4.66",
 ]
 
-[tool.poetry.dependencies]
-python = ">=3.8,<4.0"
-click = "8.0.1"
+[project.optional-dependencies]
+guided = ["metamaska>=0.0.1"]
 
-black  = { version = "^22.8.0", optional = true}
-isort  = { version = "^5.10.1", optional = true}
-flake8  = { version = "^5.0.4", optional = true}
-flake8-docstrings = { version = "^1.6.0", optional = true }
-mypy = {version = "^0.971", optional = true}
-pytest  = { version = "^7.1.3", optional = true}
-pytest-cov  = { version = "^3.0.0", optional = true}
-tox  = { version = "^3.26.0", optional = true}
-virtualenv  = { version = "^20.16.5", optional = true}
-pip  = { version = "^22.2.2", optional = true}
-mkdocs  = { version = "^1.3.1", optional = true}
-mkdocs-include-markdown-plugin  = { version = "^3.8.1", optional = true}
-mkdocs-material  = { version = "^8.5.2", optional = true}
-mkdocstrings-python  = { version = "^0.7.1", optional = true}
-mkdocs-material-extensions  = { version = "^1.0.3", optional = true}
-twine  = { version = "^4.0.1", optional = true}
-mkdocs-autorefs = {version = "^0.4.1", optional = true}
-pre-commit = {version = "^2.20.0", optional = true}
-toml = {version = "^0.10.2", optional = true}
-bump2version = {version = "^1.0.1", optional = true}
-metamaska = {version = "^0.2.0", optional = true}
-tqdm = "^4.64.1"
+[project.urls]
+Homepage = "https://github.com/HappyHackingSpace/pirebok"
+Documentation = "https://happyhackingspace.github.io/pirebok"
+Repository = "https://github.com/HappyHackingSpace/pirebok"
 
-[tool.poetry.extras]
-test = [
-    "pytest",
-    "black",
-    "isort",
-    "mypy",
-    "flake8",
-    "flake8-docstrings",
-    "pytest-cov"
-    ]
-
-dev = ["tox", "pre-commit", "virtualenv", "pip", "twine", "toml", "bump2version"]
-
-doc = [
-    "mkdocs",
-    "mkdocs-include-markdown-plugin",
-    "mkdocs-material",
-    "mkdocstrings-python",
-    "mkdocs-material-extension",
-    "mkdocs-autorefs"
-    ]
-
-[tool.poetry.scripts]
-pirebok = 'pirebok.cli:main'
-
-[tool.black]
-line-length = 120
-skip-string-normalization = true
-target-version = ['py38', 'py39', 'py310']
-include = '\.pyi?$'
-exclude = '''
-/(
-    \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | _build
-  | buck-out
-  | build
-  | dist
-)/
-'''
-
-[tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
-ensure_newline_before_comments = true
-line_length = 120
-skip_gitignore = true
-# you can skip files as below
-#skip_glob = docs/conf.py
+[project.scripts]
+pirebok = "pirebok.cli:main"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "pirebok/_version.py"
+
+[tool.hatch.build.targets.sdist]
+include = ["pirebok/"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["pirebok"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0",
+    "pytest-cov>=6.0",
+    "ruff>=0.15.0",
+    "mypy>=1.19",
+    "pre-commit>=4.5",
+    "mkdocs>=1.6",
+    "mkdocs-include-markdown-plugin>=7.0",
+    "mkdocs-material>=9.6",
+    "mkdocstrings-python>=2.0",
+    "mkdocs-material-extensions>=1.3",
+    "mkdocs-autorefs>=1.4",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E203", "E266"]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"_version.py" = ["I001"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["pirebok"]
+
+[tool.mypy]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--cov=pirebok --cov-branch --cov-report=term-missing"
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "def main",
+]

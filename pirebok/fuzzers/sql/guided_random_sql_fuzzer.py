@@ -1,8 +1,6 @@
 import random
 from typing import Sequence
 
-from metamaska.metamaska import Metamaska
-
 from pirebok.fuzzers.fuzzer_visitor import FuzzerVisitor
 from pirebok.fuzzers.sql_fuzzer import SqlFuzzer
 from pirebok.transformers import Transformer
@@ -14,7 +12,8 @@ class GuidedRandomSqlFuzzer(SqlFuzzer):
         self.threshold: float
 
     def fuzz(self, payload: str) -> str:
-        # TODO:move this out
+        from metamaska.metamaska import Metamaska
+
         metamask = Metamaska()
         payload_buff = random.choice(self.transformers).transform(payload)
         cls, proba = metamask.form(payload_buff, True)

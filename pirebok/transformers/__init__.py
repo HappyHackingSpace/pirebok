@@ -6,6 +6,6 @@ from .generic.random_space_substitution_transformer import RandomSpaceSubstituti
 from .generic_transformer import GenericTransformer
 from .sql.random_keyword_swapping_transformer import RandomKeywordSwappingTransformer
 from .sql.random_logical_invariant_appender_transformer import RandomLogicalInvariantAppenderTransformer
-from .sql.random_tautology_swapping_transofmer import RandomTautologySwappingTransformer
+from .sql.random_tautology_swapping_transformer import RandomTautologySwappingTransformer
 from .sql_transformer import SqlTransformer
 from .transformer import Transformer

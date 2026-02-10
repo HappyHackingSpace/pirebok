@@ -9,7 +9,7 @@ You can contribute in many ways:
 
 ### Report Bugs
 
-Report bugs at https://github.com/dogancanbakir/pirebok/issues.
+Report bugs at https://github.com/HappyHackingSpace/pirebok/issues.
 
 If you are reporting a bug, please include:
 
@@ -35,7 +35,7 @@ articles, and such.
 
 ### Submit Feedback
 
-The best way to send feedback is to file an issue at https://github.com/dogancanbakir/pirebok/issues.
+The best way to send feedback is to file an issue at https://github.com/HappyHackingSpace/pirebok/issues.
 
 If you are proposing a feature:
 
@@ -55,11 +55,11 @@ Ready to contribute? Here's how to set up `pirebok` for local development.
     $ git clone git@github.com:your_name_here/pirebok.git
     ```
 
-3. Ensure [poetry](https://python-poetry.org/docs/) is installed.
-4. Install dependencies and start your virtualenv:
+3. Ensure [uv](https://docs.astral.sh/uv/) is installed.
+4. Install dependencies:
 
     ```
-    $ poetry install -E test -E doc -E dev
+    $ uv sync --group dev
     ```
 
 5. Create a branch for local development:
@@ -71,10 +71,10 @@ Ready to contribute? Here's how to set up `pirebok` for local development.
     Now you can make your changes locally.
 
 6. When you're done making changes, check that your changes pass the
-   tests, including testing other Python versions, with tox:
+   tests:
 
     ```
-    $ poetry run tox
+    $ make test
     ```
 
 7. Commit your changes and push your branch to GitHub:
@@ -95,14 +95,14 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.md.
-3. The pull request should work for Python 3.6, 3.7, 3.8 and 3.9. Check
-   https://github.com/dogancanbakir/pirebok/actions
+3. The pull request should work for Python 3.13. Check
+   https://github.com/HappyHackingSpace/pirebok/actions
    and make sure that the tests pass for all supported Python versions.
 
 ## Tips
 
 ```
-$ poetry run pytest tests/test_pirebok.py
+$ uv run pytest tests/
 ```
 
 To run a subset of tests.
@@ -110,14 +110,6 @@ To run a subset of tests.
 
 ## Deploying
 
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in CHANGELOG.md).
-Then run:
-
-```
-$ poetry run bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-```
-
-GitHub Actions will then deploy to PyPI if tests pass.
+Releases are automated via CI. Push to `main` and the CI pipeline will
+auto-tag based on conventional commits (feat: -> minor, fix: -> patch),
+build, and publish to PyPI.

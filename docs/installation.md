@@ -22,13 +22,13 @@ the [Github repo][].
 You can either clone the public repository:
 
 ``` console
-$ git clone git://github.com/dogancanbakir/pirebok
+$ git clone git://github.com/HappyHackingSpace/pirebok
 ```
 
 Or download the [tarball][]:
 
 ``` console
-$ curl -OJL https://github.com/dogancanbakir/pirebok/tarball/master
+$ curl -OJL https://github.com/HappyHackingSpace/pirebok/tarball/main
 ```
 
 Once you have a copy of the source, you can install it with:
@@ -39,5 +39,5 @@ $ pip install .
 
   [pip]: https://pip.pypa.io
   [Python installation guide]: http://docs.python-guide.org/en/latest/starting/installation/
-  [Github repo]: https://github.com/%7B%7B%20cookiecutter.github_username%20%7D%7D/%7B%7B%20cookiecutter.project_slug%20%7D%7D
-  [tarball]: https://github.com/%7B%7B%20cookiecutter.github_username%20%7D%7D/%7B%7B%20cookiecutter.project_slug%20%7D%7D/tarball/master
+  [Github repo]: https://github.com/HappyHackingSpace/pirebok
+  [tarball]: https://github.com/HappyHackingSpace/pirebok/tarball/main

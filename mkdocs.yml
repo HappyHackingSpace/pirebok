@@ -1,8 +1,7 @@
 site_name: pirebok
-site_url: https://dogancanbakir.github.io/pirebok
-repo_url: https://github.com/dogancanbakir/pirebok
-repo_name: dogancanbakir/pirebok
-#strict: true
+site_url: https://happyhackingspace.github.io/pirebok
+repo_url: https://github.com/HappyHackingSpace/pirebok
+repo_name: HappyHackingSpace/pirebok
 nav:
   - Home: index.md
   - Installation: installation.md
@@ -13,7 +12,6 @@ nav:
 theme:
   name: material
   language: en
-  #logo: assets/logo.png
   palette:
     scheme: preference
     primary: indigo
@@ -54,22 +52,8 @@ plugins:
         - pirebok
 extra:
   social:
-    - icon: fontawesome/brands/twitter
-      # replace with your own tweet link below
-      link: https://github.com/waynerv/cookiecutter-pypackage
-      name: Tweet
-    - icon: fontawesome/brands/facebook
-      # replace with your own facebook link below
-      link: https://github.com/waynerv/cookiecutter-pypackage
-      name: Facebook
     - icon: fontawesome/brands/github
-      link: https://github.com/dogancanbakir/pirebok
+      link: https://github.com/HappyHackingSpace/pirebok
       name: Github
     - icon: material/email
       link: "mailto:dogancanbakir@protonmail.com"
-  # to enable disqus, uncomment the following and put your disqus id below
-  # disqus: disqus_id
-# uncomment the following and put your google tracking id below to enable GA
-#google_analytics:
-  #- UA-xxx
-  #- auto
