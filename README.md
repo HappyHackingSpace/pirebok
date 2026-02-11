@@ -16,6 +16,14 @@
 * PyPI: <https://pypi.org/project/pirebok/>
 * Free software: MIT
 
+## Features
+- **4 attack types**: SQL injection, XSS, command injection, path traversal
+- Random and guided (evolutionary) fuzzers for each attack type
+- Guided fuzzers use [metamaska](https://github.com/HappyHackingSpace/metamaska) classifier to iteratively mutate payloads until they evade detection
+  - Priority-queue-based payload pool ranked by confidence
+  - Configurable `max_rounds`, `round_size`, and `timeout`
+- 17 type-specific transformers + 6 generic transformers
+
 ## How it works
 
 Give it a payload. It mutates it until it bypasses the classifier.
@@ -48,14 +56,6 @@ pip install pirebok
 # for guided mode (requires metamaska)
 pip install pirebok[guided]
 ```
-
-## Features
-- **4 attack types**: SQL injection, XSS, command injection, path traversal
-- Random and guided (evolutionary) fuzzers for each attack type
-- Guided fuzzers use [metamaska](https://github.com/HappyHackingSpace/metamaska) classifier to iteratively mutate payloads until they evade detection
-  - Priority-queue-based payload pool ranked by confidence
-  - Configurable `max_rounds`, `round_size`, and `timeout`
-- 17 type-specific transformers + 6 generic transformers
 
 ## Credits
 - [Cookiecutter](https://github.com/audreyr/cookiecutter)
