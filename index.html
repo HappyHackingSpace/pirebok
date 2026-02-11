@@ -298,6 +298,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -313,17 +324,6 @@
     <span class="md-ellipsis">
       
         Install
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Features
       
     </span>
   </a>
@@ -526,6 +526,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#how-it-works" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -541,17 +552,6 @@
     <span class="md-ellipsis">
       
         Install
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Features
       
     </span>
   </a>
@@ -608,6 +608,15 @@
 <li>PyPI: <a href="https://pypi.org/project/pirebok/">https://pypi.org/project/pirebok/</a></li>
 <li>Free software: MIT</li>
 </ul>
+<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>4 attack types</strong>: SQL injection, XSS, command injection, path traversal</li>
+<li>Random and guided (evolutionary) fuzzers for each attack type</li>
+<li>Guided fuzzers use <a href="https://github.com/HappyHackingSpace/metamaska">metamaska</a> classifier to iteratively mutate payloads until they evade detection</li>
+<li>Priority-queue-based payload pool ranked by confidence</li>
+<li>Configurable <code>max_rounds</code>, <code>round_size</code>, and <code>timeout</code></li>
+<li>17 type-specific transformers + 6 generic transformers</li>
+</ul>
 <h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
 <p>Give it a payload. It mutates it until it bypasses the classifier.</p>
 <div class="highlight"><pre><span></span><code>pirebok<span class="w"> </span>-f<span class="w"> </span>GuidedRandomSqlFuzzer<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;admin&#39; OR 1=1#&quot;</span><span class="w"> </span>-s<span class="w"> </span><span class="m">5</span><span class="w"> </span>-q
@@ -651,15 +660,6 @@
 <span class="c1"># for guided mode (requires metamaska)</span>
 pip<span class="w"> </span>install<span class="w"> </span>pirebok<span class="o">[</span>guided<span class="o">]</span>
 </code></pre></div>
-<h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
-<ul>
-<li><strong>4 attack types</strong>: SQL injection, XSS, command injection, path traversal</li>
-<li>Random and guided (evolutionary) fuzzers for each attack type</li>
-<li>Guided fuzzers use <a href="https://github.com/HappyHackingSpace/metamaska">metamaska</a> classifier to iteratively mutate payloads until they evade detection</li>
-<li>Priority-queue-based payload pool ranked by confidence</li>
-<li>Configurable <code>max_rounds</code>, <code>round_size</code>, and <code>timeout</code></li>
-<li>17 type-specific transformers + 6 generic transformers</li>
-</ul>
 <h3 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://github.com/audreyr/cookiecutter">Cookiecutter</a></li>
