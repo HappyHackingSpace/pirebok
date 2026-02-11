@@ -25,6 +25,30 @@ fuzzer = (
 fuzzer.fuzz("admin' OR 1=1#")
 ```
 
+### XSS fuzzing
+
+```python
+from pirebok.fuzzers import FuzzerBuilder
+fuzzer = FuzzerBuilder().choice("RandomXssFuzzer").build()
+fuzzer.fuzz("<script>alert(1)</script>")
+```
+
+### Command injection fuzzing
+
+```python
+from pirebok.fuzzers import FuzzerBuilder
+fuzzer = FuzzerBuilder().choice("RandomCmdiFuzzer").build()
+fuzzer.fuzz("; cat /etc/passwd")
+```
+
+### Path traversal fuzzing
+
+```python
+from pirebok.fuzzers import FuzzerBuilder
+fuzzer = FuzzerBuilder().choice("RandomPathTraversalFuzzer").build()
+fuzzer.fuzz("../../etc/passwd")
+```
+
 To use from CLI
 
 ```
@@ -32,7 +56,10 @@ pirebok --help
 Usage: pirebok [OPTIONS]
 
 Options:
-  -f, --fuzzer [randomgenericfuzzer|guidedrandomsqlfuzzer|randomsqlfuzzer]
+  -f, --fuzzer [guidedrandomcmdifuzzer|randomcmdifuzzer|randomgenericfuzzer|
+                guidedrandompathtraversalfuzzer|randompathtraversalfuzzer|
+                guidedrandomsqlfuzzer|randomsqlfuzzer|
+                guidedrandomxssfuzzer|randomxssfuzzer]
                                   choose fuzzer  [required]
   -s, --steps INTEGER             Number of iteration  [default: 10]
   -t, --threshold FLOAT           Threshold for the guided fuzzers  [default: 0.5]
@@ -40,6 +67,7 @@ Options:
   --round-size INTEGER            Mutations per round for guided fuzzers  [default: 20]
   --timeout INTEGER               Timeout in seconds, 0=unlimited  [default: 0]
   -p, --payload TEXT              Payload to fuzz  [required]
+  -q, --silent                    Suppress banner
   --help                          Show this message and exit.
 ```
 

@@ -50,12 +50,12 @@ pip install pirebok[guided]
 ```
 
 ## Features
-- Random generic fuzzer w/ multiple transformers
-- Random sql fuzzer w/ multiple transformers
-- Guided random sql fuzzer w/ iterative evolutionary search and [metamaska](https://github.com/HappyHackingSpace/metamaska)
+- **4 attack types**: SQL injection, XSS, command injection, path traversal
+- Random and guided (evolutionary) fuzzers for each attack type
+- Guided fuzzers use [metamaska](https://github.com/HappyHackingSpace/metamaska) classifier to iteratively mutate payloads until they evade detection
   - Priority-queue-based payload pool ranked by confidence
   - Configurable `max_rounds`, `round_size`, and `timeout`
-- Random comment injection transformer (`/**/` at token boundaries)
+- 17 type-specific transformers + 6 generic transformers
 
 ## Credits
 - [Cookiecutter](https://github.com/audreyr/cookiecutter)
