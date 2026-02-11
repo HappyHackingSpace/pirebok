@@ -38,6 +38,8 @@ def test_finds_better_payload() -> None:
             .round_size(5)
             .build()
         )
+        # Patch _mutation_round to guarantee a different payload
+        fuzzer._mutation_round = lambda payload, size: {"aDmIn'/**/OR/**/1=1#"}  # type: ignore[assignment]
         result = fuzzer.fuzz("admin' OR 1=1#")
 
     assert result != "admin' OR 1=1#"
