@@ -354,6 +354,39 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#xss-fuzzing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XSS fuzzing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-injection-fuzzing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command injection fuzzing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-traversal-fuzzing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path traversal fuzzing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#guided-fuzzer-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -495,6 +528,39 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#xss-fuzzing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        XSS fuzzing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-injection-fuzzing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Command injection fuzzing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#path-traversal-fuzzing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Path traversal fuzzing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#guided-fuzzer-options" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -552,12 +618,30 @@
 <span class="p">)</span>
 <span class="n">fuzzer</span><span class="o">.</span><span class="n">fuzz</span><span class="p">(</span><span class="s2">&quot;admin&#39; OR 1=1#&quot;</span><span class="p">)</span>
 </code></pre></div>
+<h4 id="xss-fuzzing">XSS fuzzing<a class="headerlink" href="#xss-fuzzing" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pirebok.fuzzers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuzzerBuilder</span>
+<span class="n">fuzzer</span> <span class="o">=</span> <span class="n">FuzzerBuilder</span><span class="p">()</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s2">&quot;RandomXssFuzzer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">fuzzer</span><span class="o">.</span><span class="n">fuzz</span><span class="p">(</span><span class="s2">&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="command-injection-fuzzing">Command injection fuzzing<a class="headerlink" href="#command-injection-fuzzing" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pirebok.fuzzers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuzzerBuilder</span>
+<span class="n">fuzzer</span> <span class="o">=</span> <span class="n">FuzzerBuilder</span><span class="p">()</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s2">&quot;RandomCmdiFuzzer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">fuzzer</span><span class="o">.</span><span class="n">fuzz</span><span class="p">(</span><span class="s2">&quot;; cat /etc/passwd&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="path-traversal-fuzzing">Path traversal fuzzing<a class="headerlink" href="#path-traversal-fuzzing" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pirebok.fuzzers</span><span class="w"> </span><span class="kn">import</span> <span class="n">FuzzerBuilder</span>
+<span class="n">fuzzer</span> <span class="o">=</span> <span class="n">FuzzerBuilder</span><span class="p">()</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s2">&quot;RandomPathTraversalFuzzer&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<span class="n">fuzzer</span><span class="o">.</span><span class="n">fuzz</span><span class="p">(</span><span class="s2">&quot;../../etc/passwd&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>To use from CLI</p>
 <div class="highlight"><pre><span></span><code>pirebok --help
 Usage: pirebok [OPTIONS]
 
 Options:
-  -f, --fuzzer [randomgenericfuzzer|guidedrandomsqlfuzzer|randomsqlfuzzer]
+  -f, --fuzzer [guidedrandomcmdifuzzer|randomcmdifuzzer|randomgenericfuzzer|
+                guidedrandompathtraversalfuzzer|randompathtraversalfuzzer|
+                guidedrandomsqlfuzzer|randomsqlfuzzer|
+                guidedrandomxssfuzzer|randomxssfuzzer]
                                   choose fuzzer  [required]
   -s, --steps INTEGER             Number of iteration  [default: 10]
   -t, --threshold FLOAT           Threshold for the guided fuzzers  [default: 0.5]
@@ -565,6 +649,7 @@ Options:
   --round-size INTEGER            Mutations per round for guided fuzzers  [default: 20]
   --timeout INTEGER               Timeout in seconds, 0=unlimited  [default: 0]
   -p, --payload TEXT              Payload to fuzz  [required]
+  -q, --silent                    Suppress banner
   --help                          Show this message and exit.
 </code></pre></div>
 <h4 id="guided-fuzzer-options">Guided fuzzer options<a class="headerlink" href="#guided-fuzzer-options" title="Permanent link">&para;</a></h4>

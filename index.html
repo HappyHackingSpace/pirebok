@@ -653,12 +653,12 @@ pip<span class="w"> </span>install<span class="w"> </span>pirebok<span class="o"
 </code></pre></div>
 <h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Random generic fuzzer w/ multiple transformers</li>
-<li>Random sql fuzzer w/ multiple transformers</li>
-<li>Guided random sql fuzzer w/ iterative evolutionary search and <a href="https://github.com/HappyHackingSpace/metamaska">metamaska</a></li>
+<li><strong>4 attack types</strong>: SQL injection, XSS, command injection, path traversal</li>
+<li>Random and guided (evolutionary) fuzzers for each attack type</li>
+<li>Guided fuzzers use <a href="https://github.com/HappyHackingSpace/metamaska">metamaska</a> classifier to iteratively mutate payloads until they evade detection</li>
 <li>Priority-queue-based payload pool ranked by confidence</li>
 <li>Configurable <code>max_rounds</code>, <code>round_size</code>, and <code>timeout</code></li>
-<li>Random comment injection transformer (<code>/**/</code> at token boundaries)</li>
+<li>17 type-specific transformers + 6 generic transformers</li>
 </ul>
 <h3 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">&para;</a></h3>
 <ul>
