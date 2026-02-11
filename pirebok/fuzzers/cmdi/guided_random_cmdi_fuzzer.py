@@ -1,13 +1,13 @@
 from typing import Sequence
 
+from pirebok.fuzzers.cmdi_fuzzer import CmdiFuzzer
 from pirebok.fuzzers.fuzzer_visitor import FuzzerVisitor
 from pirebok.fuzzers.guided_fuzzer_mixin import GuidedFuzzerMixin
-from pirebok.fuzzers.sql_fuzzer import SqlFuzzer
 from pirebok.transformers import Transformer
 
 
-class GuidedRandomSqlFuzzer(GuidedFuzzerMixin, SqlFuzzer):
-    _target_class = "sqli"
+class GuidedRandomCmdiFuzzer(GuidedFuzzerMixin, CmdiFuzzer):
+    _target_class = "cmdi"
 
     def __init__(self, transformers: Sequence[Transformer]) -> None:
         super().__init__(transformers)
@@ -17,4 +17,4 @@ class GuidedRandomSqlFuzzer(GuidedFuzzerMixin, SqlFuzzer):
         self.timeout: int = 0
 
     def accept(self, visitor: FuzzerVisitor) -> None:
-        visitor.visit_sql(self)
+        visitor.visit_cmdi(self)
