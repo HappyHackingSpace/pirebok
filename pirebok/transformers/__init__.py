@@ -1,4 +1,5 @@
 from .generic.random_case_swapping_transformer import RandomCaseSwappingTransformer
+from .generic.random_comment_injection_transformer import RandomCommentInjectionTransformer
 from .generic.random_comment_removing_transformer import RandomCommentRemovingTransformer
 from .generic.random_comment_rewriting_transformer import RandomCommentRewritingTransformer
 from .generic.random_number_encoding_transformer import RandomNumberEncodingTransformer

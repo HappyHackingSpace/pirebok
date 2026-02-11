@@ -22,3 +22,8 @@
 
 
 ## [Unreleased]
+### Added
+- Iterative evolutionary search for `GuidedRandomSqlFuzzer`
+- `PayloadPool` — priority queue for ranked payloads with deduplication
+- `RandomCommentInjectionTransformer` — inject `/**/` at random token boundaries
+- `--max-rounds`, `--round-size`, `--timeout` CLI options and builder methods

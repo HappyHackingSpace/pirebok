@@ -1,7 +1,7 @@
 [project]
 name = "pirebok"
 dynamic = ["version"]
-description = "a guided adversarial fuzzer"
+description = "a guided adversarial fuzzer with evolutionary search"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.13"

@@ -31,5 +31,17 @@ class FuzzerBuilder:
         self.fuzzer.threshold = threshold  # type: ignore
         return self
 
+    def max_rounds(self, max_rounds: int) -> FuzzerBuilder:
+        self.fuzzer.max_rounds = max_rounds  # type: ignore
+        return self
+
+    def round_size(self, round_size: int) -> FuzzerBuilder:
+        self.fuzzer.round_size = round_size  # type: ignore
+        return self
+
+    def timeout(self, timeout: int) -> FuzzerBuilder:
+        self.fuzzer.timeout = timeout  # type: ignore
+        return self
+
     def build(self) -> Fuzzer:
         return self.fuzzer
