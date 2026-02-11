@@ -1,5 +1,8 @@
 # pîrebok (from Kurdish "witch") - a guided adversarial fuzzer with evolutionary search
 
+![Banner](./banner.png)
+
+
 
 [![pypi](https://img.shields.io/pypi/v/pirebok.svg)](https://pypi.org/project/pirebok/)
 [![python](https://img.shields.io/pypi/pyversions/pirebok.svg)](https://pypi.org/project/pirebok/)
