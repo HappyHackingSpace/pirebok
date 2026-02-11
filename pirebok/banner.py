@@ -7,7 +7,6 @@ import colorsys
 import os
 import sys
 
-
 BANNER_WIDTH = 80
 BANNER_PIXEL_HEIGHT = 48
 

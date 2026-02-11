@@ -3,6 +3,7 @@ from functools import reduce
 from operator import iconcat
 
 import click
+
 from pirebok.banner import banner
 from pirebok.fuzzers import Fuzzer, FuzzerBuilder
 
